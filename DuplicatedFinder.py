@@ -6,7 +6,7 @@ from shutil import move
 
 class Mains:
     def __init__(self):
-        self.destinationDir = "test\\here\\"
+        self.destinationDir = "duplicated_files\\"
         print("\n### Duplicated Files ###\n")
 
     def find_dup(self, parentFolder):
