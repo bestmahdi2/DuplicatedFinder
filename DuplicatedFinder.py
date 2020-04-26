@@ -1,4 +1,4 @@
-from os import makedirs, path, listdir, walk
+from os import makedirs, path, listdir, walk , sep
 from sys import argv, exit
 from hashlib import md5
 from shutil import move
@@ -6,7 +6,7 @@ from shutil import move
 
 class Mains:
     def __init__(self):
-        self.destinationDir = "duplicated_files\\"
+        self.destinationDir = "duplicated_files" + sep
         print("\n### Duplicated Files ###\n")
 
     def find_dup(self, parentFolder):
@@ -65,24 +65,24 @@ class Mains:
                     # absolute path of the file :
                     absulpath = path.abspath(subresult)
 
-                    filefullname = absulpath[absulpath.rfind("\\"):]
+                    filefullname = absulpath[absulpath.rfind(sep):]
                     # file with no format :
                     filename = filefullname[:filefullname.rfind(".")]
                     # just file format :
                     filetype = filefullname[filefullname.rfind("."):]
 
-                    makedirs(path.dirname(self.destinationDir + str(dir_num) + "\\"), exist_ok=True)
+                    makedirs(path.dirname(self.destinationDir + str(dir_num) + sep), exist_ok=True)
 
                     listd = listdir(self.destinationDir + str(dir_num))
 
-                    if filefullname.replace("\\", "") not in listd:
+                    if filefullname.replace(sep, "") not in listd:
                         move(absulpath, self.destinationDir + str(dir_num) + filefullname)
                     else:
                         move(absulpath, self.destinationDir + str(dir_num) + filename + "(" + str(x) + ")" + filetype)
                         x += 1
 
                 # creat txt file for duplicated files' locations
-                file = open(self.destinationDir + str(dir_num) + "\\" + "Right_Path.txt", "w")
+                file = open(self.destinationDir + str(dir_num) + sep + "Right_Path.txt", "w")
                 for k in to_print:
                     file.write(k + "\n")
 
