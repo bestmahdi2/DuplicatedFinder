@@ -42,6 +42,7 @@ Open **CMD** or **PowerShell** on Windows and type:
    , -p : Permanently delete , 
 and you can't use both -r and -s together
 
+
 Open **Terminal** on Linux and type:
 
     python3  Deleter.py [-r] [-p]

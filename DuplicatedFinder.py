@@ -84,9 +84,12 @@ class Mains:
                 # creat txt file for duplicated files' locations
                 file = open(self.destinationDir + str(dir_num) + sep + "Right_Path.txt", "w")
                 for k in to_print:
-                    file.write(k + "\n")
-
+                    try:
+                        file.write(k + "\n")
+                    except:
+                        file.write("Couldn't write in this file because texts are not ASCII\n")
                 file.close()
+
                 print('\n___________________\n')
             print("\nAll files have been moved to : " + self.destinationDir + "\n" )
         else:
