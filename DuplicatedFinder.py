@@ -82,7 +82,7 @@ class Mains:
                         x += 1
 
                 # creat txt file for duplicated files' locations
-                file = open(self.destinationDir + str(dir_num) + sep + "Right_Path.txt", "w")
+                file = open(self.destinationDir + str(dir_num) + sep + "Right_Path.txt", "w",encoding="utf-8")
                 for k in to_print:
                     try:
                         file.write(k + "\n")
@@ -113,3 +113,4 @@ if __name__ == '__main__':
     else:
         print("&^% Wrong %^&\n")
         print('Usage: python dupFinder.py folder *OR* python dupFinder.py folder1 folder2 folder3')
+    input()

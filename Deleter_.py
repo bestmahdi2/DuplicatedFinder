@@ -28,6 +28,7 @@ class deleter:
 
                 if len(self.lister) > 1 :
                     self.deleter(dele,dir)
+        print("\n===Done!===\n")
         input()
 
 
