@@ -1,10 +1,8 @@
-import threading
 from os import makedirs, path, listdir, walk, sep, chdir, getcwd, remove
 from os.path import exists
 from sys import argv, exit, stdout
 from hashlib import md5
-from shutil import move
-
+from shutil import move,rmtree
 from send2trash import send2trash
 
 
@@ -55,7 +53,7 @@ class DuplicateFinder:
         if len(results) > 0:
             print('\nDuplicates Found:')
             print('The following files are identical. The name could differ, but the content is identical')
-            print('\n___________________\n')
+            print('___________________\n')
 
             # Number of the directories which been made
             dir_num = 0
@@ -65,19 +63,23 @@ class DuplicateFinder:
                 dir_num += 1
                 to_print = []
                 for subresult in result:
-                    print('\t\t%s' % subresult)
-                    to_print.append(subresult)
+                    print('\t\t%s' % subresult.replace("\\",sep).replace("/",sep))
+                    to_print.append(subresult.replace("\\",sep).replace("/",sep))
                     # absolute path of the file :
-                    absulpath = path.abspath(subresult)
+                    absulpath = path.abspath(subresult.replace("\\",sep).replace("/",sep))
 
                     filefullname = absulpath[absulpath.rfind(sep):]
+
                     # file with no format :
                     filename = filefullname[:filefullname.rfind(".")]
+
                     # just file format :
                     filetype = filefullname[filefullname.rfind("."):]
+
                     self.filetype.add(filetype)
 
-                    makedirs(path.dirname(self.destinationDir + str(dir_num) + sep), exist_ok=True)
+                    makedirs(path.dirname(self.destinationDir +str(dir_num) + sep), exist_ok=True)
+                    #
 
                     listd = listdir(self.destinationDir + str(dir_num))
 
@@ -96,10 +98,10 @@ class DuplicateFinder:
                         file.write("Couldn't write in this file because texts are not ASCII\n")
                 file.close()
 
-                print('\n___________________\n')
-            print("\nAll files have been moved to : " + self.destinationDir + "\n" )
+                print('___________________\n')
+            print("All files have been moved to : " + self.destinationDir )
         else:
-            print('\nNo duplicate files found.')
+            print('No duplicate files found.')
 
         # self.filetype = list(filter(None, self.filetype))
 
@@ -122,17 +124,17 @@ class DuplicateFinder:
             input()
             exit()
         self.print_results(dups)
-        print("\nAll file types are : " + str(self.filetype).replace("{", "").replace("}", ""))
-        input()
+        print("All file types are : " + str(self.filetype).replace("{", "").replace("}", "")+"\n")
 
 class deleter:
     def __init__(self):
         print("\n### File Deleter ###\n")
         self.answer = ""
 
-        if "duplicated_files" in getcwd():
-            self.pwd = getcwd()
-        elif "duplicated_files" in listdir("."):
+        # print(str(getcwd()))
+
+        if "duplicated_files" in listdir("."):
+            self.pwdParent = getcwd()
             chdir("duplicated_files")
             self.pwd = getcwd()
         else:
@@ -175,7 +177,7 @@ class deleter:
                 if len(self.lister) > 1 :
                     self.deleter(dele,dir)
         print("\n===Done!===\n")
-        input()
+        # input()
 
     def deleter(self,dele,dir):
         filetype = self.lister[0].replace(self.lister[0][:self.lister[0].rfind(".")], "")
@@ -227,7 +229,7 @@ class deleter:
 
 
     def inputer(self):
-        self.answer = input("\nDo you want your files to be moved to RecycleBin(yes) or Permanently(no) delete? (yes, no)\n >  ")
+        self.answer = input("Do you want your files to be moved to RecycleBin(yes) or Permanently(no) delete? (yes, no)\n >  ")
         if self.answer == "yes":
             self.mains("-r")
         elif self.answer == "no":
@@ -252,9 +254,8 @@ class bringer:
         # endregion
 
         if dir == "":
-            if "duplicated_files" in getcwd():
-                self.pwd = getcwd()
-            elif "duplicated_files" in listdir("."):
+            if "duplicated_files" in listdir("."):
+                self.pwdParent = getcwd()
                 chdir("duplicated_files")
                 self.pwd = getcwd()
             else:
@@ -271,9 +272,20 @@ class bringer:
 
 
         chdir(self.pwd)
-        for i in listdir("."):
-            if path.isdir(i):
-                self.bring(i)
+        dirs = [i for i in listdir(".") if path.isdir(i) and "Right_Path.txt" in listdir(i)]
+        # print(dirs)
+
+        self.dirs = []
+        self.counter = 0
+        for i in dirs:
+            chdir(self.pwd)
+            self.bring(i)
+            self.dirs.append(i)
+
+        if self.counter > 0 :
+            print(str(self.counter) + " file(s) brought back.")
+        else:
+            print("No file brought back.")
 
     def opendir(self):
         file_path = ""
@@ -284,12 +296,12 @@ class bringer:
         self.pwd = file_path.replace("\\",sep).replace("/",sep)
         return file_path
 
-
     def bring(self,dir):
         chdir(dir)
+        self.counter += len(listdir("."))-1
 
-        file = open("Right_Path.txt", "r")
-        Saved_loc = [i.replace("\n","") for i in file.readlines() if i != ""]
+        file_txt = open("Right_Path.txt", "r")
+        Saved_loc = [i.replace("\n","") for i in file_txt.readlines() if i != ""]
 
         for file in listdir("."):
             absulpath = path.abspath(file)
@@ -299,8 +311,10 @@ class bringer:
                 if fileO in loc:
                     po_loc.append(loc)
 
-            if len(po_loc) == 0:
-                continue
+            # print(po_loc)
+            # print(fileO)
+            # print(Saved_loc)
+
             if len(po_loc) == 1:
                 # move(pwd+file,po_loc[0][:po_loc[0].rfind(sep)])
                 move(absulpath , po_loc[0][:po_loc[0].rfind(sep)]+sep+fileO )
@@ -312,6 +326,11 @@ class bringer:
                     x +=1
                 answer = int(input(" > "))
                 move(absulpath , po_loc[answer-1][:po_loc[answer-1].rfind(sep)]+sep+fileO)
+
+    def deleter(self):
+        chdir(self.pwd)
+        for dir in self.dirs:
+            rmtree(dir,ignore_errors=True)
 
 if __name__ == '__main__':
     def help():
@@ -327,6 +346,49 @@ if __name__ == '__main__':
         Bringer                  |    duplicated_files location       |   Type Location of duplicated_files (HERE :  . / or .\\)""")
         input()
         exit()
+
+    def argv1():
+        answer = input(
+            "\nWhat would you like to do?\n1)Search for duplicated files\n2)Keep one, delete the rest\n3)Bring back the founded files to original location\n > ")
+
+        if answer == "1":
+            D = DuplicateFinder()
+            D.inputer()
+            print("\nI'm in (DUP): " + getcwd()+"\n")
+
+
+            if input("Do you like to continue ?(yes,no)\n > ") == "yes":
+                argv1()
+            else:
+                print("OK, Bye!!!")
+                input()
+
+        if answer == "2":
+            D = deleter()
+            D.inputer()
+            chdir(D.pwdParent)
+            print("\nI'm in (deleter): " + getcwd()+"\n")
+
+            if input("Do you like to continue ?(yes,no)\n > ") == "yes":
+                argv1()
+            else:
+                print("OK, Bye!!!")
+                input()
+
+        if answer == "3":
+            B = bringer("")
+            delete = input("\nDo you want to delete useless txt_adress_files and their folders ?(yes,no)\n > ")
+            print("\nI'm in (Bri): " + getcwd()+"\n")
+            if delete == "yes":
+                B.deleter()
+                print("\nI'm in (Bri): " + getcwd()+"\n")
+            chdir(B.pwdParent)
+
+            if input("Do you like to continue ?(yes,no)\n > ") == "yes":
+                argv1()
+            else:
+                print("OK, Bye!!!")
+                input()
 
     if len(argv) > 2:
         if argv[1].lower() == "duplicatefinder":
@@ -355,9 +417,9 @@ if __name__ == '__main__':
                 help()
 
 
+
         elif argv[1].lower() == "bringer":
             B = bringer(argv[2])
-
 
         else:
             print("===nWrong!!!===")
@@ -368,16 +430,4 @@ if __name__ == '__main__':
         help()
 
     if len(argv) == 1:
-        answer = input(
-            "What would you like to do?\n1)Search for duplicated files\n2)Keep one, delete the rest\n3)Bring back the founded files to original location\n > ")
-
-        if answer == "1":
-            D= DuplicateFinder()
-            D.inputer()
-
-        if answer == "2":
-            D = deleter()
-            D.inputer()
-
-        if answer == "3":
-            B = bringer("")
+        argv1()
