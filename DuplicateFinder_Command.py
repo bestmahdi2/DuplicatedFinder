@@ -16,7 +16,7 @@ class DuplicateFinder:
         # Dups in format {hash:[names]}
         dups = {}
         for dirName, subdirs, fileList in walk(parentFolder):
-            print('Scanning %s...' % dirName)
+            print('========\n\nScanning %s...' % dirName)
             for filename in fileList:
                 # Get the path to the file
                 path_ = path.join(dirName, filename)
@@ -101,7 +101,7 @@ class DuplicateFinder:
                 print('___________________\n')
             print("All files have been moved to : " + self.destinationDir )
         else:
-            print('No duplicate files found.')
+            print('\nNo duplicate files found.')
 
         # self.filetype = list(filter(None, self.filetype))
 
@@ -110,12 +110,12 @@ class DuplicateFinder:
         from tkinter import filedialog, Tk
         root = Tk()
         root.withdraw()
-        file_path = filedialog.askdirectory(initialdir="/", title="Select Directory")
+        file_path = filedialog.askdirectory(initialdir=".", title="Select Directory")
         return file_path
 
     def inputer(self):
         dups = {}
-        print("Select the directory you want to search in for duplicated files.")
+        print("Select the directory you want to search in for duplicated files.\n")
         address = self.opendir()
         if path.exists(address):
             self.join_dicts(dups, self.find_dup(address))
@@ -124,7 +124,8 @@ class DuplicateFinder:
             input()
             exit()
         self.print_results(dups)
-        print("All file types are : " + str(self.filetype).replace("{", "").replace("}", "")+"\n")
+        if len(self.filetype) != 0:
+            print("\nAll file types are : " + str(self.filetype).replace("{", "").replace("}", "")+"\n")
 
 class deleter:
     def __init__(self):
@@ -154,7 +155,7 @@ class deleter:
         from tkinter import filedialog, Tk
         root = Tk()
         root.withdraw()
-        file_path = filedialog.askdirectory(initialdir="/", title="Select Directory")
+        file_path = filedialog.askdirectory(initialdir=".", title="Select Directory")
         self.pwd = file_path.replace("\\",sep).replace("/",sep)
         print(self.pwd)
         return file_path
@@ -292,7 +293,7 @@ class bringer:
         from tkinter import filedialog, Tk
         root = Tk()
         root.withdraw()
-        file_path = filedialog.askdirectory(initialdir="/", title="Select Directory")
+        file_path = filedialog.askdirectory(initialdir=".", title="Select Directory")
         self.pwd = file_path.replace("\\",sep).replace("/",sep)
         return file_path
 
