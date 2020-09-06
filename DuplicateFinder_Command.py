@@ -1,6 +1,5 @@
 from os import makedirs, path, listdir, walk, sep, chdir, getcwd, remove
-from os.path import exists
-from sys import argv, exit, stdout
+from sys import argv, exit
 from hashlib import md5
 from shutil import move,rmtree
 from send2trash import send2trash
@@ -38,9 +37,14 @@ class DuplicateFinder:
                 dict1[key] = dict2[key]
 
     def hashfile(self, path, blocksize=65536):
+
+        # open the file in binary
         afile = open(path, 'rb')
         hasher = md5()
+
+        # read the file till "blocksize" byte.
         buf = afile.read(blocksize)
+
         while len(buf) > 0:
             hasher.update(buf)
             buf = afile.read(blocksize)
@@ -399,7 +403,7 @@ if __name__ == '__main__':
             for folder in folders:
                 # Iterate the folders given
                 if path.exists(folder):
-                    # Find the duplicated files and append them to the dups
+                    # Find the duplicated files in diffrent directories and append them to the dups
                     M.join_dicts(dups, M.find_dup(folder))
                 else:
                     print('%s is not a valid path, please verify' % folder)
