@@ -136,12 +136,16 @@
     <property name="font">
      <font>
       <family>Calibri</family>
+      <pointsize>11</pointsize>
       <weight>50</weight>
       <bold>false</bold>
      </font>
     </property>
     <property name="statusTip">
      <string/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white</string>
     </property>
     <property name="tabPosition">
      <enum>QTabWidget::North</enum>
@@ -183,7 +187,7 @@
      <attribute name="title">
       <string>Duplicate Finder</string>
      </attribute>
-     <widget class="QGroupBox" name="groupBox_Tools">
+     <widget class="QGroupBox" name="groupBox_Ignore">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -206,7 +210,7 @@
       <property name="title">
        <string>Ignore:</string>
       </property>
-      <widget class="QCheckBox" name="checkBox_Select">
+      <widget class="QCheckBox" name="checkBox_sizeUnder">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -233,7 +237,7 @@
         <string>Files Size Under :</string>
        </property>
       </widget>
-      <widget class="QSpinBox" name="spinBox">
+      <widget class="QSpinBox" name="spinBox_Under">
        <property name="geometry">
         <rect>
          <x>205</x>
@@ -243,7 +247,7 @@
         </rect>
        </property>
       </widget>
-      <widget class="QLabel" name="Label_Progress_text_2">
+      <widget class="QLabel" name="Label_MB_Under">
        <property name="geometry">
         <rect>
          <x>250</x>
@@ -293,7 +297,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="Label_Progress_text_3">
+      <widget class="QLabel" name="Label_MB_Over">
        <property name="geometry">
         <rect>
          <x>250</x>
@@ -343,7 +347,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QSpinBox" name="spinBox_2">
+      <widget class="QSpinBox" name="spinBox_Over">
        <property name="geometry">
         <rect>
          <x>205</x>
@@ -353,7 +357,7 @@
         </rect>
        </property>
       </widget>
-      <widget class="QCheckBox" name="checkBox_Select_3">
+      <widget class="QCheckBox" name="checkBox_sizeOver">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -524,7 +528,7 @@
       <property name="title">
        <string>Locations</string>
       </property>
-      <widget class="QComboBox" name="comboBox">
+      <widget class="QComboBox" name="comboBox_dir">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -551,7 +555,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QPushButton" name="Button_open">
+      <widget class="QPushButton" name="Button_loc_open_dir">
        <property name="geometry">
         <rect>
          <x>500</x>
@@ -582,7 +586,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QGroupBox" name="Preview_group">
+     <widget class="QGroupBox" name="groupBox_State">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -605,7 +609,7 @@
       <property name="title">
        <string>State:</string>
       </property>
-      <widget class="QTextBrowser" name="lineEdit_Preview_O">
+      <widget class="QTextBrowser" name="lineEdit_State">
        <property name="geometry">
         <rect>
          <x>20</x>
@@ -632,7 +636,7 @@
         <enum>QFrame::Plain</enum>
        </property>
       </widget>
-      <widget class="QLabel" name="Label_Progress_text_5">
+      <widget class="QLabel" name="Label_Time_remain">
        <property name="geometry">
         <rect>
          <x>20</x>
@@ -682,7 +686,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="Label_Progress_text_4">
+      <widget class="QLabel" name="Label_Time_left">
        <property name="geometry">
         <rect>
          <x>20</x>
@@ -732,7 +736,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="Label_Progress_text_6">
+      <widget class="QLabel" name="Label_Time_left_sec_2">
        <property name="geometry">
         <rect>
          <x>210</x>
@@ -782,7 +786,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="Label_Progress_text_7">
+      <widget class="QLabel" name="Label_Time_left_sec">
        <property name="geometry">
         <rect>
          <x>210</x>
@@ -832,7 +836,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="Label_Progress_text_8">
+      <widget class="QLabel" name="Label_Time_left_num">
        <property name="geometry">
         <rect>
          <x>180</x>
@@ -882,7 +886,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="Label_Progress_text_9">
+      <widget class="QLabel" name="Label_Time_remain_num">
        <property name="geometry">
         <rect>
          <x>180</x>
@@ -932,7 +936,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="Label_Progress_text_13">
+      <widget class="QLabel" name="Label_Groups_num">
        <property name="geometry">
         <rect>
          <x>520</x>
@@ -982,7 +986,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="Label_Progress_text_16">
+      <widget class="QLabel" name="Label_Files">
        <property name="geometry">
         <rect>
          <x>360</x>
@@ -1032,7 +1036,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="Label_Progress_text_17">
+      <widget class="QLabel" name="Label_Files_num">
        <property name="geometry">
         <rect>
          <x>520</x>
@@ -1082,7 +1086,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="Label_Progress_text_18">
+      <widget class="QLabel" name="Label_Groups">
        <property name="geometry">
         <rect>
          <x>360</x>
@@ -1157,7 +1161,7 @@
        <string>Cancel Operation</string>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:white</string>
+       <string notr="true">background-color:white;color:green</string>
       </property>
       <property name="text">
        <string>Cancel</string>
@@ -1166,7 +1170,7 @@
        <string>Ctrl+C</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="Button_preview_2">
+     <widget class="QPushButton" name="Button_save">
       <property name="geometry">
        <rect>
         <x>630</x>
@@ -1190,7 +1194,7 @@
        <string>Preview Changes</string>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:white</string>
+       <string notr="true">background-color:white;color:green</string>
       </property>
       <property name="text">
        <string>Save</string>
@@ -1199,7 +1203,7 @@
        <string>Ctrl+P</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="Button_Rename">
+     <widget class="QPushButton" name="Button_Go">
       <property name="geometry">
        <rect>
         <x>630</x>
@@ -1223,7 +1227,7 @@
        <string>Rename Files</string>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:white</string>
+       <string notr="true">background-color:white;color:green</string>
       </property>
       <property name="text">
        <string>Go!</string>
@@ -1256,7 +1260,7 @@
        <string>Reset Program</string>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:white</string>
+       <string notr="true">background-color:white;color:green</string>
       </property>
       <property name="text">
        <string>Reset</string>
@@ -1265,7 +1269,7 @@
        <string>Ctrl+R</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="Button_preview">
+     <widget class="QPushButton" name="Button_FileList">
       <property name="geometry">
        <rect>
         <x>630</x>
@@ -1289,7 +1293,7 @@
        <string>Preview Changes</string>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:white</string>
+       <string notr="true">background-color:white;color:green</string>
       </property>
       <property name="text">
        <string>Files List</string>
@@ -1303,7 +1307,7 @@
      <attribute name="title">
       <string>List Of Files</string>
      </attribute>
-     <widget class="QGroupBox" name="Preview_group_2">
+     <widget class="QGroupBox" name="groupBox_Files">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1326,207 +1330,7 @@
       <property name="title">
        <string>Files:</string>
       </property>
-      <widget class="QLabel" name="Label_Progress_text_10">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>490</y>
-         <width>111</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Calibri</family>
-         <pointsize>10</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-         <stylestrategy>PreferDefault</stylestrategy>
-         <kerning>true</kerning>
-        </font>
-       </property>
-       <property name="contextMenuPolicy">
-        <enum>Qt::DefaultContextMenu</enum>
-       </property>
-       <property name="statusTip">
-        <string/>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color:#D9AC63</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
-       </property>
-       <property name="text">
-        <string>Groups:</string>
-       </property>
-       <property name="textFormat">
-        <enum>Qt::AutoText</enum>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-       <property name="wordWrap">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QLabel" name="Label_Progress_text_11">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>470</y>
-         <width>101</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Calibri</family>
-         <pointsize>10</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-         <stylestrategy>PreferDefault</stylestrategy>
-         <kerning>true</kerning>
-        </font>
-       </property>
-       <property name="contextMenuPolicy">
-        <enum>Qt::DefaultContextMenu</enum>
-       </property>
-       <property name="statusTip">
-        <string/>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color:#D9AC63</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
-       </property>
-       <property name="text">
-        <string>All files:</string>
-       </property>
-       <property name="textFormat">
-        <enum>Qt::AutoText</enum>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-       <property name="wordWrap">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QLabel" name="Label_Progress_text_14">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>470</y>
-         <width>41</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Calibri</family>
-         <pointsize>10</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-         <stylestrategy>PreferDefault</stylestrategy>
-         <kerning>true</kerning>
-        </font>
-       </property>
-       <property name="contextMenuPolicy">
-        <enum>Qt::DefaultContextMenu</enum>
-       </property>
-       <property name="statusTip">
-        <string/>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color:#D9AC63</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
-       </property>
-       <property name="text">
-        <string>file</string>
-       </property>
-       <property name="textFormat">
-        <enum>Qt::AutoText</enum>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-       <property name="wordWrap">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QLabel" name="Label_Progress_text_15">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>490</y>
-         <width>41</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Calibri</family>
-         <pointsize>10</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-         <stylestrategy>PreferDefault</stylestrategy>
-         <kerning>true</kerning>
-        </font>
-       </property>
-       <property name="contextMenuPolicy">
-        <enum>Qt::DefaultContextMenu</enum>
-       </property>
-       <property name="statusTip">
-        <string/>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color:#D9AC63</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
-       </property>
-       <property name="text">
-        <string>file</string>
-       </property>
-       <property name="textFormat">
-        <enum>Qt::AutoText</enum>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-       <property name="wordWrap">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QTableWidget" name="tableWidget">
+      <widget class="QTableWidget" name="tableWidget_files">
        <property name="geometry">
         <rect>
          <x>20</x>
@@ -1598,8 +1402,208 @@
         </property>
        </column>
       </widget>
+      <widget class="QLabel" name="Label_Files_num_2">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>470</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Calibri</family>
+         <pointsize>10</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+         <stylestrategy>PreferDefault</stylestrategy>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::DefaultContextMenu</enum>
+       </property>
+       <property name="statusTip">
+        <string/>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:#D9AC63</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="text">
+        <string>time</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="Label_Files_2">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>470</y>
+         <width>101</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Calibri</family>
+         <pointsize>10</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+         <stylestrategy>PreferDefault</stylestrategy>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::DefaultContextMenu</enum>
+       </property>
+       <property name="statusTip">
+        <string/>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:#D9AC63</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="text">
+        <string>All Files:</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="Label_Groups_num_2">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>490</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Calibri</family>
+         <pointsize>10</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+         <stylestrategy>PreferDefault</stylestrategy>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::DefaultContextMenu</enum>
+       </property>
+       <property name="statusTip">
+        <string/>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:#D9AC63</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="text">
+        <string>time</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="Label_Groups_2">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>490</y>
+         <width>111</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Calibri</family>
+         <pointsize>10</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+         <stylestrategy>PreferDefault</stylestrategy>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::DefaultContextMenu</enum>
+       </property>
+       <property name="statusTip">
+        <string/>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:#D9AC63</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="text">
+        <string>Groups:</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
      </widget>
-     <widget class="QPushButton" name="Button_stop_2">
+     <widget class="QPushButton" name="Button_Open_dir">
       <property name="geometry">
        <rect>
         <x>630</x>
@@ -1623,7 +1627,7 @@
        <string>Cancel Operation</string>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:white</string>
+       <string notr="true">background-color:white;color:green</string>
       </property>
       <property name="text">
        <string>Open Dir</string>
@@ -1632,7 +1636,7 @@
        <string>Ctrl+C</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="Button_Rename_2">
+     <widget class="QPushButton" name="Button_Open_file">
       <property name="geometry">
        <rect>
         <x>630</x>
@@ -1656,7 +1660,7 @@
        <string>Rename Files</string>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:white</string>
+       <string notr="true">background-color:white;color:green</string>
       </property>
       <property name="text">
        <string>Open File</string>
@@ -1670,7 +1674,7 @@
      <attribute name="title">
       <string>Restore Files</string>
      </attribute>
-     <widget class="QGroupBox" name="Preview_group_3">
+     <widget class="QGroupBox" name="groupBox_Restore">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1693,7 +1697,7 @@
       <property name="title">
        <string>Restore:</string>
       </property>
-      <widget class="QTableWidget" name="tableWidget_2">
+      <widget class="QTableWidget" name="tableWidget_files_restore">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1766,7 +1770,7 @@
        </column>
       </widget>
      </widget>
-     <widget class="QGroupBox" name="groupBox_Loc_2">
+     <widget class="QGroupBox" name="groupBox_Loc_file">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1789,7 +1793,7 @@
       <property name="title">
        <string>Saved File Location</string>
       </property>
-      <widget class="QComboBox" name="comboBox_2">
+      <widget class="QComboBox" name="comboBox_file">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1816,7 +1820,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QPushButton" name="Button_open_2">
+      <widget class="QPushButton" name="Button_loc_open_file">
        <property name="geometry">
         <rect>
          <x>500</x>
@@ -1917,7 +1921,7 @@
        <number>0</number>
       </property>
      </widget>
-     <widget class="QLabel" name="Label_Progress_text_12">
+     <widget class="QLabel" name="Label_Progress_text_2">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1967,40 +1971,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="Button_Rename_3">
-      <property name="geometry">
-       <rect>
-        <x>630</x>
-        <y>70</y>
-        <width>81</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
-        <weight>50</weight>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="statusTip">
-       <string>Rename Files</string>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:white</string>
-      </property>
-      <property name="text">
-       <string>Open File</string>
-      </property>
-      <property name="shortcut">
-       <string>Return</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="Button_stop_3">
+     <widget class="QPushButton" name="Button_restore">
       <property name="geometry">
        <rect>
         <x>630</x>
@@ -2024,7 +1995,7 @@
        <string>Cancel Operation</string>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:white</string>
+       <string notr="true">background-color:white;color:green</string>
       </property>
       <property name="text">
        <string>Restore</string>
@@ -2033,7 +2004,40 @@
        <string>Ctrl+C</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="Button_stop_4">
+     <widget class="QPushButton" name="Button_Open_file_2">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>70</y>
+        <width>81</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Calibri</family>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="statusTip">
+       <string>Rename Files</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:white;color:green</string>
+      </property>
+      <property name="text">
+       <string>Open File</string>
+      </property>
+      <property name="shortcut">
+       <string>Return</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_Open_dir_2">
       <property name="geometry">
        <rect>
         <x>630</x>
@@ -2057,7 +2061,7 @@
        <string>Cancel Operation</string>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:white</string>
+       <string notr="true">background-color:white;color:green</string>
       </property>
       <property name="text">
        <string>Open Dir</string>
@@ -2130,16 +2134,16 @@
   </widget>
  </widget>
  <tabstops>
-  <tabstop>comboBox</tabstop>
-  <tabstop>Button_open</tabstop>
-  <tabstop>checkBox_Select</tabstop>
-  <tabstop>Button_Rename</tabstop>
+  <tabstop>comboBox_dir</tabstop>
+  <tabstop>Button_loc_open_dir</tabstop>
+  <tabstop>checkBox_sizeUnder</tabstop>
+  <tabstop>Button_Go</tabstop>
   <tabstop>Button_stop</tabstop>
   <tabstop>Button_reset</tabstop>
-  <tabstop>Button_preview</tabstop>
-  <tabstop>Button_preview_2</tabstop>
+  <tabstop>Button_FileList</tabstop>
+  <tabstop>Button_save</tabstop>
   <tabstop>Button_help</tabstop>
-  <tabstop>lineEdit_Preview_O</tabstop>
+  <tabstop>lineEdit_State</tabstop>
   <tabstop>tabWidget</tabstop>
  </tabstops>
  <resources/>
